@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Route, Switch } from "react-router-dom";
+import { Route, Switch, Redirect } from "react-router-dom";
 import Home from "./Home";
 import About from "./About";
 import Login from "./Login";
@@ -19,7 +19,7 @@ function App() {
           <Login setIsLoggedIn={setIsLoggedIn} />
         </Route>
         <Route exact path="/">
-          <Home isLoggedIn={isLoggedIn} />
+          {isLoggedIn ? <Home /> : <Redirect to="/login" />}
         </Route>
       </Switch>
     </div>
